@@ -1,0 +1,114 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, "Tajawal", "Cairo", Arial;
+  background: #f5f5f5;
+  display: grid;
+  place-items: start center;
+  padding: 16px;
+}
+
+.phone{
+  width: min(390px, 100vw);
+  position: relative;
+}
+
+.bg{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* اليوم */
+.day{
+  position: absolute;
+  top: 140px;          /* بنعدله */
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+/* التاريخين */
+.dates{
+  position: absolute;
+  top: 205px;          /* بنعدله */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 86%;
+  display: flex;
+  justify-content: space-between;
+  color: #6d5a4a;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* شبكة العدادات */
+/* العدادات: تموضع دقيق فوق الخلفية */
+.counters{
+  position: absolute;
+  inset: 0;            /* يغطي نفس مساحة الصورة */
+  pointer-events: none;
+}
+
+.c{
+  position: absolute;
+  width: 64px;         /* عدّليها حسب حجم الدائرة */
+  height: 64px;
+  display: grid;
+  place-items: center;
+  transform: translate(-50%, -50%);
+}
+
+.n{
+  color: #fff;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 1;
+  transform: translateY(-6px); /* يرفع الرقم للجزء العلوي من الدائرة */
+}
+/* الصف الأول */
+.salary     { left: 77%; top: 46%; }
+.university { left: 52%; top: 46%; }
+.retirement { left: 23%; top: 46%; }
+
+/* الصف الثاني */
+.citizen    { left: 77%; top: 59%; }
+.rehab      { left: 52%; top: 59%; }
+.insurance  { left: 23%; top: 59%; }
+
+/* الصف الثالث */
+.housing    { left: 77%; top: 71%; }
+.hafiz      { left: 52%; top: 71%; }
+.saned      { left: 23%; top: 71%; }
+
+.dates{
+  position: absolute;
+  top: 28%;
+  left: 40%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 30px;
+  font-weight: 600;
+  color: #6b5a4a;
+  font-size: 16px;
+  direction: ltr;
+}
+
+/* قاعدة مشتركة للتاريخين */
+.dates .date{
+  display: inline-block;
+  min-width: 130px;   /* خليها 120-160 حسب شكل التصميم */
+  text-align: center;
+}
+
+/* تحكم الهجري لحاله */
+.dates .date-h{
+  transform: translateX(60px); /* سالب = يسار */
+}
+
+/* تحكم الميلادي لحاله */
+.dates .date-m{
+  transform: translateX(30px);  /* موجب = يمين */
+}  /* يروح يمين */
