@@ -2,15 +2,16 @@
 const UPDATE_HOUR = 22; // 10 مساء
 const START_DATE = new Date(2026, 1, 11); // ✅ 11 فبراير 2026 (الشهر يبدأ من 0)
 
-// ===== دوال مساعدة =====
 function getAppDate(now = new Date()) {
-  // لحظة التحديث لليوم (اليوم يبدأ بعد 10 مساء)
-  const todayAtUpdate = new Date(
-    now.getFullYear(),
-    now.getMonth(),
-    now.getDate(),
-    UPDATE_HOUR, 0, 0
-  );
+  const d = new Date(now);
+
+  if (d.getHours() >= UPDATE_HOUR) {
+    d.setDate(d.getDate() + 1);
+  }
+
+  d.setHours(12, 0, 0, 0);
+  return d;
+
 
   // إذا الوقت قبل 10 مساء، نعتبر ما دخلنا "يوم النظام" الجديد
   if (now < todayAtUpdate) {
