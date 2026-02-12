@@ -8,7 +8,6 @@ function getAppDate(now = new Date()) {
   if (d.getHours() >= UPDATE_HOUR) {
     d.setDate(d.getDate() + 1);
   }
-
   d.setHours(12, 0, 0, 0);
   return d;
 
