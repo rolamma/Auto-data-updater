@@ -103,35 +103,3 @@ document.addEventListener("DOMContentLoaded", () => {
   render();
   scheduleNextTick();
 });
-btn.addEventListener("click", async () => {
-  const phone = document.querySelector(".phone");
-  if (!phone) return;
-
-  btn.style.display = "none";
-  await new Promise(r => requestAnimationFrame(r));
-
-  const canvas = await html2canvas(phone, {
-    backgroundColor: null,
-    scale: 2,
-    useCORS: true,
-  });
-
-  btn.style.display = "";
-
-  canvas.toBlob(async (blob) => {
-    if (!blob) return;
-
-    const file = new File([blob], 'calendar_${Date.now()}.png ', { type: "image/png" });
-
-    // ✅ iPhone/Android (Share)
-    if (navigator.canShare && navigator.canShare({ files: [file] })) {
-      await navigator.share({ files: [file], title: "Calendar" });
-      return;
-    }
-
-    // ✅ fallback: افتح الصورة في تبويب جديد
-    const url = URL.createObjectURL(blob);
-    window.open(url, "_blank");
-    setTimeout(() => URL.revokeObjectURL(url), 60000);
-  }, "image/png");
-});
