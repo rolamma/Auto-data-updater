@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.style.display = "";
 
       const link = document.createElement("a");
-      link.download = 'calendar_${Date.now()}.png'; // ✅ صح
+      link.download = "calendar_${Date.now()}.png"; // ✅ صح
       link.href = canvas.toDataURL("image/png");
       link.click();
     });
