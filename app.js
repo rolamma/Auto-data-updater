@@ -103,3 +103,32 @@ document.addEventListener("DOMContentLoaded", () => {
   render();
   scheduleNextTick();
 });
+document.addEventListener("DOMContentLoaded", () => {
+  render();
+  scheduleNextTick();
+
+  // زر حفظ الصورة
+  const btn = document.getElementById("saveBtn");
+  if (btn) {
+    btn.addEventListener("click", async () => {
+      const phone = document.querySelector(".phone");
+      if (!phone) return;
+
+      btn.style.display = "none";
+      await new Promise((r) => requestAnimationFrame(r));
+
+      const canvas = await html2canvas(phone, {
+        backgroundColor: null,
+        scale: 2,
+        useCORS: true,
+      });
+
+      btn.style.display = "";
+
+      const link = document.createElement("a");
+      link.download = "calendar_${Date.now()}.png"; // ✅ صح
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    });
+  }
+});
